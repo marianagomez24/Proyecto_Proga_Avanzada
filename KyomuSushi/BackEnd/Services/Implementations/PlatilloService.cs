@@ -1,5 +1,6 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Services.Interfaces;
+using DAL.Interfaces;
 using Entities.Entities;
 
 namespace BackEnd.Services.Implementations
@@ -17,6 +18,12 @@ namespace BackEnd.Services.Implementations
         {
             return new Platillo
             {
+                IdPlatillo = platillo.IdPlatillo,
+                Nombre = platillo.Nombre,
+                Descripcion = platillo.Descripcion,
+                Precio = platillo.Precio,
+                Imagen= platillo.Imagen,
+                IdCategoria = platillo.IdCategoria
 
             };
         }
@@ -25,32 +32,52 @@ namespace BackEnd.Services.Implementations
         {
             return new PlatilloDTO
             {
+                IdPlatillo = platillo.IdPlatillo,
+                Nombre = platillo.Nombre,
+                Descripcion = platillo.Descripcion,
+                Precio = platillo.Precio,
+                Imagen = platillo.Imagen,
+                IdCategoria = platillo.IdCategoria
 
             };
         }
-        public PlatilloDTO Add(PlatilloDTO platillo)
+        public void Add(PlatilloDTO platillo)
         {
-            throw new NotImplementedException();
+            var platilloEntity = Convertir(platillo);
+            _unidadDeTrabajo.PlatilloDAL.Add(platilloEntity);
+            _unidadDeTrabajo.Complete();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var platillo = new Platillo { IdPlatillo = id };
+            _unidadDeTrabajo.PlatilloDAL.Remove(platillo);
+            _unidadDeTrabajo.Complete();
         }
 
         public PlatilloDTO GetPlatilloById(int id)
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.PlatilloDAL.Get(id);
+            return Convertir(result);
         }
 
         public List<PlatilloDTO> GetPlatillos()
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.PlatilloDAL.GetAll();
+            List<PlatilloDTO> platillos = new List<PlatilloDTO>();
+            foreach (var item in result)
+            {
+                platillos.Add(Convertir(item));
+            }
+            return platillos;
         }
 
-        public PlatilloDTO Update(PlatilloDTO platillo)
+        public void Update(PlatilloDTO platillo)
         {
-            throw new NotImplementedException();
+            var platilloEntity = Convertir(platillo);
+            _unidadDeTrabajo.PlatilloDAL.Update(platilloEntity);
+            _unidadDeTrabajo.Complete();
         }
+        
     }
 }

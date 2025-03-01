@@ -8,7 +8,7 @@ using Entities.Entities;
 
 namespace DAL.Implementations
 {
-    public class CategoriaDAL : DALGenericoImpl<Categoria>, ICategoriaDAL
+    public class CategoriaDAL : DALGenericoImpl<Categorium>, ICategoriaDAL
     {
         public KyomuDbContext _context;
 
@@ -18,36 +18,28 @@ namespace DAL.Implementations
 
         }
 
-        public List<Pedido> GetAllPedidos()
+        public List<Categorium> GetAllCategorias()
         {
-            return _context.Pedidos
-                .Select(e => new Pedido
+            return _context.Categoria
+                .Select(e => new Categorium
                 {
-                    IdPedido = e.IdPedido,
-                    IdUsuario = e.IdUsuario,
-                    FechaEntrega = e.FechaEntrega,
-                    FechaPedido = e.FechaPedido,
-                    TipoEntrega = e.TipoEntrega,
-                    Total = e.Total,
-                    Estado = e.Estado,
+                    IdCategoria = e.IdCategoria,
+                    NombreCategoria = e.NombreCategoria,
+                    Descripcion = e.Descripcion
 
                 })
                 .ToList();
         }
 
-        public bool Add(Pedido entity)
+        public bool Add(Categorium entity)
         {
             try
             {
-                _context.Pedidos.Add(new Pedido
+                _context.Categoria.Add(new Categorium
                 {
-                    IdPedido = entity.IdPedido,
-                    IdUsuario = entity.IdUsuario,
-                    FechaEntrega = entity.FechaEntrega,
-                    FechaPedido = entity.FechaPedido,
-                    TipoEntrega = entity.TipoEntrega,
-                    Total = entity.Total,
-                    Estado = entity.Estado,
+                    IdCategoria = entity.IdCategoria,
+                    NombreCategoria = entity.NombreCategoria,
+                    Descripcion = entity.Descripcion
                 });
                 _context.SaveChanges();
                 return true;

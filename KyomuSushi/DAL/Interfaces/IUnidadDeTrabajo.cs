@@ -10,7 +10,11 @@ namespace DAL.Interfaces
     {
         IPedidoDAL PedidoDAL { get; }
         IPagoDAL PagoDAL { get; }
-
+        ICategoriaDAL CategoriaDAL { get; }
+        IPlatilloDAL PlatilloDAL { get; }
+        IReseñaDAL ReseñaDAL { get; }
+        IRolDAL RolDAL { get; }
+        IUsuarioDAL UsuarioDAL { get; }
         bool Complete();
     }
 }

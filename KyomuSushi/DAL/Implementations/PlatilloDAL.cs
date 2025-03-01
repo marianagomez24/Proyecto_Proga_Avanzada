@@ -18,5 +18,9 @@ namespace DAL.Implementations
 
         }
 
+        public List<Platillo> GetAllPlatillos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

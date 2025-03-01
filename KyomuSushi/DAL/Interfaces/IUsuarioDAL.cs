@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities.Entities;
 
 namespace DAL.Interfaces
 {
-    interface IUsuarioDAL
+    public interface IUsuarioDAL : IDALGenerico<Usuario>
     {
+        List<Usuario> GetAllUsuarios();
     }
 }

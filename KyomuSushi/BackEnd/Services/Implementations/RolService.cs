@@ -1,5 +1,6 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Services.Interfaces;
+using DAL.Interfaces;
 using Entities.Entities;
 
 namespace BackEnd.Services.Implementations
@@ -17,6 +18,9 @@ namespace BackEnd.Services.Implementations
         {
             return new Rol
             {
+                IdRol = rol.IdRol,
+                NombreRol = rol.NombreRol,
+                Descripcion = rol.Descripcion
 
             };
         }
@@ -25,33 +29,47 @@ namespace BackEnd.Services.Implementations
         {
             return new RolDTO
             {
-
+                IdRol = rol.IdRol,
+                NombreRol = rol.NombreRol,
+                Descripcion = rol.Descripcion
             };
         }
-
-        public RolDTO Add(RolDTO rol)
+        public void Add(RolDTO rol)
         {
-            throw new NotImplementedException();
+            var rolEntity = Convertir(rol);
+            _unidadDeTrabajo.RolDAL.Add(rolEntity);
+            _unidadDeTrabajo.Complete();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var rol = new Rol { IdRol = id };
+            _unidadDeTrabajo.RolDAL.Remove(rol);
+            _unidadDeTrabajo.Complete();
         }
 
         public RolDTO GetRolById(int id)
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.RolDAL.Get(id);
+            return Convertir(result);
         }
 
         public List<RolDTO> GetRoles()
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.RolDAL.GetAll();
+            List<RolDTO> roles = new List<RolDTO>();
+            foreach (var item in result)
+            {
+                roles.Add(Convertir(item));
+            }
+            return roles;
         }
 
-        public RolDTO Update(RolDTO rol)
+        public void Update(RolDTO rol)
         {
-            throw new NotImplementedException();
+            var rolEntity = Convertir(rol);
+            _unidadDeTrabajo.RolDAL.Update(rolEntity);
+            _unidadDeTrabajo.Complete();
         }
     }
 }

@@ -12,18 +12,33 @@ namespace DAL.Implementations
     {
         public IPagoDAL PagoDAL { get; set; }
         public IPedidoDAL PedidoDAL { get; set; }
+        public ICategoriaDAL CategoriaDAL { get; set; }
+        public IPlatilloDAL PlatilloDAL { get; set; }
+        public IReseñaDAL ReseñaDAL { get; set; }
+        public IRolDAL RolDAL { get; set; }
+        public IUsuarioDAL UsuarioDAL { get; set; }
 
         private KyomuDbContext _context;
 
         public UnidadDeTrabajo(KyomuDbContext context,
                         IPagoDAL pagoDAL,
-                        IPedidoDAL pedidoDAL)
-
+                        IPedidoDAL pedidoDAL,
+                        ICategoriaDAL categoriaDAL,
+                        IPlatilloDAL platilloDAL,
+                        IReseñaDAL reseñaDAL,
+                        IRolDAL rolDAL,
+                        IUsuarioDAL usuarioDAL)
+                        
 
             {
                 this._context = context;
                 this.PagoDAL = pagoDAL;
                  this.PedidoDAL = pedidoDAL;
+                this.CategoriaDAL = categoriaDAL;
+            this.ReseñaDAL = reseñaDAL;
+            this.PlatilloDAL = platilloDAL;
+            this.RolDAL = rolDAL;
+            this.UsuarioDAL = usuarioDAL;
             
 
         }

@@ -17,5 +17,10 @@ namespace DAL.Implementations
             _context = context;
 
         }
+
+        public List<Rol> GetAllRoles()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

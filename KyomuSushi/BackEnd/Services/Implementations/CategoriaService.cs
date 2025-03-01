@@ -1,5 +1,6 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Services.Interfaces;
+using DAL.Interfaces;
 using Entities.Entities;
 
 namespace BackEnd.Services.Implementations
@@ -13,44 +14,62 @@ namespace BackEnd.Services.Implementations
             _unidadDeTrabajo = unidadDeTrabajo;
         }
 
-        Categoria Convertir(CategoriaDTO categoria)
+        Categorium Convertir(CategoriaDTO categoria)
         {
-            return new Categoria
+            return new Categorium
             {
-                
+                IdCategoria = categoria.IdCategoria,
+                NombreCategoria = categoria.NombreCategoria,
+                Descripcion = categoria.Descripcion
             };
         }
 
-        CategoriaDTO Convertir(Categoria categoria)
+        CategoriaDTO Convertir(Categorium categoria)
         {
             return new CategoriaDTO
             {
+                IdCategoria = categoria.IdCategoria,
+                NombreCategoria = categoria.NombreCategoria,
+                Descripcion = categoria.Descripcion
 
             };
         }
-        public CategoriaDTO Add(CategoriaDTO categoria)
+        public void Add(CategoriaDTO categoria)
         {
-            throw new NotImplementedException();
+            var categoriaEntity = Convertir(categoria);
+            _unidadDeTrabajo.CategoriaDAL.Add(categoriaEntity);
+            _unidadDeTrabajo.Complete();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var categoria = new Categorium { IdCategoria = id };
+            _unidadDeTrabajo.CategoriaDAL.Remove(categoria);
+            _unidadDeTrabajo.Complete();
         }
 
         public List<CategoriaDTO> GetCategoria()
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.CategoriaDAL.GetAll();
+            List<CategoriaDTO> categorias = new List<CategoriaDTO>();
+            foreach (var item in result)
+            {
+                categorias.Add(Convertir(item));
+            }
+            return categorias;
         }
 
-        public CategoriaDTO Update(CategoriaDTO categoria)
+        public void Update(CategoriaDTO categoria)
         {
-            throw new NotImplementedException();
+            var categoriaEntity = Convertir(categoria);
+            _unidadDeTrabajo.CategoriaDAL.Update(categoriaEntity);
+            _unidadDeTrabajo.Complete();
         }
 
         public CategoriaDTO GetCategoriaById(int id)
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.CategoriaDAL.Get(id);
+            return Convertir(result);
         }
     }
 }

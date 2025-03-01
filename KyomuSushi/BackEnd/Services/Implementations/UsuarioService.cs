@@ -1,5 +1,6 @@
 ﻿using BackEnd.DTO;
 using BackEnd.Services.Interfaces;
+using DAL.Interfaces;
 using Entities.Entities;
 
 namespace BackEnd.Services.Implementations
@@ -17,6 +18,14 @@ namespace BackEnd.Services.Implementations
         {
             return new Usuario
             {
+                IdUsuario = usuario.IdUsuario,
+                IdRol = usuario.IdRol,
+                Nombre = usuario.Nombre,
+                Telefono = usuario.Telefono,
+                CorreoElectronico = usuario.CorreoElectronico,
+                Contraseña = usuario.Contraseña,
+                Direccion = usuario.Direccion,
+                Imagen = usuario.Imagen
 
             };
         }
@@ -25,32 +34,52 @@ namespace BackEnd.Services.Implementations
         {
             return new UsuarioDTO
             {
-
+                IdUsuario = usuario.IdUsuario,
+                IdRol = usuario.IdRol,
+                Nombre = usuario.Nombre,
+                Telefono = usuario.Telefono,
+                CorreoElectronico = usuario.CorreoElectronico,
+                Contraseña = usuario.Contraseña,
+                Direccion = usuario.Direccion,
+                Imagen = usuario.Imagen
             };
         }
-        public UsuarioDTO Add(UsuarioDTO usuario)
+        public void Add(UsuarioDTO usuario)
         {
-            throw new NotImplementedException();
+            var usuarioEntity = Convertir(usuario);
+            _unidadDeTrabajo.UsuarioDAL.Add(usuarioEntity);
+            _unidadDeTrabajo.Complete();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var usuario = new Usuario { IdUsuario = id };
+            _unidadDeTrabajo.UsuarioDAL.Remove(usuario);
+            _unidadDeTrabajo.Complete();
         }
 
         public UsuarioDTO GetUsuarioById(int id)
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.UsuarioDAL.Get(id);
+            return Convertir(result);
         }
 
         public List<UsuarioDTO> GetUsuarios()
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.UsuarioDAL.GetAll();
+            List<UsuarioDTO> usuarios = new List<UsuarioDTO>();
+            foreach (var item in result)
+            {
+                usuarios.Add(Convertir(item));
+            }
+            return usuarios;
         }
 
-        public UsuarioDTO Update(UsuarioDTO usuario)
+        public void Update(UsuarioDTO usuario)
         {
-            throw new NotImplementedException();
+            var usuarioEntity = Convertir(usuario);
+            _unidadDeTrabajo.UsuarioDAL.Update(usuarioEntity);
+            _unidadDeTrabajo.Complete();
         }
     }
 }

@@ -17,5 +17,10 @@ namespace DAL.Implementations
             _context = context;
 
         }
+
+        public List<Reseña> GetAllReseñas()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
