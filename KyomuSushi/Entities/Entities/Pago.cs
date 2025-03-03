@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Entities.Entities;
 
-public partial class Pago
+public partial class Categoria
 {
     public int IdPago { get; set; }
 
