@@ -10,9 +10,9 @@ namespace DAL.Implementations
 {
     public class ReseñaDAL : DALGenericoImpl<Reseña>, IReseñaDAL
     {
-        public KyomuDbContext _context;
+        public KyomudbContext _context;
 
-        public ReseñaDAL(KyomuDbContext context) : base(context)
+        public ReseñaDAL(KyomudbContext context) : base(context)
         {
             _context = context;
 

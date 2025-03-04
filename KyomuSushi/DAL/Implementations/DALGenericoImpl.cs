@@ -12,9 +12,9 @@ namespace DAL.Implementations
     public class DALGenericoImpl<TEntity> : IDALGenerico<TEntity> where TEntity : class
     {
 
-        private KyomuDbContext _context;
+        private KyomudbContext _context;
 
-        public DALGenericoImpl(KyomuDbContext context)
+        public DALGenericoImpl(KyomudbContext context)
         {
             
             _context = context;

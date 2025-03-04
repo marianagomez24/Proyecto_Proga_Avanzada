@@ -10,9 +10,9 @@ namespace DAL.Implementations
 {
     public class PedidoDAL : DALGenericoImpl<Pedido>, IPedidoDAL
     {
-        public KyomuDbContext _context;
+        public KyomudbContext _context;
 
-        public PedidoDAL(KyomuDbContext context) : base(context)
+        public PedidoDAL(KyomudbContext context) : base(context)
         {
             _context = context;
 

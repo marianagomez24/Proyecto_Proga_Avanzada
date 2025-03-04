@@ -10,9 +10,9 @@ namespace DAL.Implementations
 {
     public class PlatilloDAL : DALGenericoImpl<Platillo>, IPlatilloDAL
     {
-        public KyomuDbContext _context;
+        public KyomudbContext _context;
 
-        public PlatilloDAL(KyomuDbContext context) : base(context)
+        public PlatilloDAL(KyomudbContext context) : base(context)
         {
             _context = context;
 

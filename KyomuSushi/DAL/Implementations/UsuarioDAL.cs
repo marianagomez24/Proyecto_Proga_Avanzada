@@ -10,9 +10,9 @@ namespace DAL.Implementations
 {
     public class UsuarioDAL : DALGenericoImpl<Usuario>, IUsuarioDAL
     {
-        public KyomuDbContext _context;
+        public KyomudbContext _context;
 
-        public UsuarioDAL(KyomuDbContext context) : base(context)
+        public UsuarioDAL(KyomudbContext context) : base(context)
         {
             _context = context;
 

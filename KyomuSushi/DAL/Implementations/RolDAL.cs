@@ -10,9 +10,9 @@ namespace DAL.Implementations
 {
     public class RolDAL : DALGenericoImpl<Rol>, IRolDAL
     {
-        public KyomuDbContext _context;
+        public KyomudbContext _context;
 
-        public RolDAL(KyomuDbContext context) : base(context)
+        public RolDAL(KyomudbContext context) : base(context)
         {
             _context = context;
 
