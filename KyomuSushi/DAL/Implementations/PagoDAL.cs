@@ -11,9 +11,9 @@ namespace DAL.Implementations
     public class PagoDAL : DALGenericoImpl<Pago>, IPagoDAL
     {
     
-        public KyomuDbContext _context;
+        public KyomudbContext _context;
    
-         public PagoDAL(KyomuDbContext context) : base(context)
+         public PagoDAL(KyomudbContext context) : base(context)
        {
             _context = context;
        }

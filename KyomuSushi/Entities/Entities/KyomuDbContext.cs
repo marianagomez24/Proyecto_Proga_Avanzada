@@ -21,7 +21,7 @@ public partial class KyomudbContext : DbContext
 
     public virtual DbSet<MetodoPago> MetodoPagos { get; set; }
 
-    public virtual DbSet<Categoria> Pagos { get; set; }
+    public virtual DbSet<Pago> Pagos { get; set; }
 
     public virtual DbSet<Pedido> Pedidos { get; set; }
 
@@ -79,7 +79,7 @@ public partial class KyomudbContext : DbContext
             entity.Property(e => e.TipoMetodo).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<Categoria>(entity =>
+        modelBuilder.Entity<Pago>(entity =>
         {
             entity.HasKey(e => e.IdPago).HasName("PK__Pago__AE88B4298B35B263");
 

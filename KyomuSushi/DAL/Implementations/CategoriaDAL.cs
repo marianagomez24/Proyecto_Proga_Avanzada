@@ -10,9 +10,9 @@ namespace DAL.Implementations
 {
     public class CategoriaDAL : DALGenericoImpl<Categorium>, ICategoriaDAL
     {
-        public KyomuDbContext _context;
+        public KyomudbContext _context;
 
-        public CategoriaDAL(KyomuDbContext context) : base(context)
+        public CategoriaDAL(KyomudbContext context) : base(context)
         {
             _context = context;
 

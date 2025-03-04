@@ -15,6 +15,8 @@ namespace DAL.Interfaces
         IReseñaDAL ReseñaDAL { get; }
         IRolDAL RolDAL { get; }
         IUsuarioDAL UsuarioDAL { get; }
+        IDetalleDAL DetalleDAL { get; }
+        IMetodoPagoDAL MetodoPagoDAL { get; }
         bool Complete();
     }
 }

@@ -23,5 +23,5 @@ public partial class Pedido
 
     public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
 
-    public virtual ICollection<Categoria> Pagos { get; set; } = new List<Categoria>();
+    public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();
 }
